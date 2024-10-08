@@ -11,13 +11,13 @@ import java.util.Map;
 public class GreetingController {
 
     @GetMapping("/greeting")
-    public String greeting(@RequestParam(name="name", required = false, defaultValue = "World") String name, Model model){
-        model.addAttribute("name", name);
+    public String greeting(@RequestParam(name="name", required = false, defaultValue = "World") String name, Map<String, Object> model){
+        model.put("name", name);
         return "greeting";
     }
-    @GetMapping("/farewell")
-    public String farewell(@RequestParam(name="name", required = false, defaultValue = "World") String name, Model model){
-        model.addAttribute("name", name);
-        return "farewell";
+    @GetMapping
+    public String start(Map<String, Object> model){
+        model.put("start", "let`s start");
+        return "start";
     }
 }
